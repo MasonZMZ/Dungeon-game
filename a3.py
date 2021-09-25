@@ -6,8 +6,8 @@ from tkinter import filedialog
 from tkinter import simpledialog
 from PIL import ImageTk, Image
 
-__author__ = "{{MingzheZhang}} ({{45666564}})"
-__email__ = "mingzhe.zhang@uqconnect.edu.au"
+__author__ = "{{Mason}} ({{45666564}})"
+__email__ = "xxxxxxx"
 __date__ = "25/10/2020"
 
 
@@ -646,6 +646,7 @@ class GameApp:
             return None
         
         else:
+            
             if self._task == MASTERS:
                 # Store each game step.
                 game_step = self._status_bar.save_step(self._game.get_player().moves_remaining(),
@@ -661,13 +662,17 @@ class GameApp:
             entity = self._game.get_entity_in_direction(e.char)
             
             if not self._game.collision_check(e.char):
+                
                 if entity is not None:
                     self._game.move_player(e.char)
                     entity.on_hit(self._game)
+                    
                     if self._task != TASK_ONE:
                         self._status_bar.update_move_remaining(self._game.get_player().moves_remaining())
                     self._view.draw_grid(self._game.get_game_information(), self._game.get_player().get_position())
+                    
                     if self._game.won():
+                        
                         if self._task == MASTERS:
                             self.win_the_game_master()
                         else: 
@@ -707,13 +712,17 @@ class GameApp:
             entity = self._game.get_entity_in_direction(pad_direction)
             
             if not self._game.collision_check(pad_direction):
+                
                 if entity is not None:
                     self._game.move_player(pad_direction)
                     entity.on_hit(self._game)
+                    
                     if self._task != TASK_ONE:
                         self._status_bar.update_move_remaining(self._game.get_player().moves_remaining())
                     self._view.draw_grid(self._game.get_game_information(), self._game.get_player().get_position())
+                    
                     if self._game.won():
+                        
                         if self._task == MASTERS:
                             self.win_the_game_master()
                         else:
